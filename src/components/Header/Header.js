@@ -1,12 +1,27 @@
-import Button from '@restart/ui/esm/Button';
 import React from 'react';
-import { Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
+import { Container, Form, Nav, Navbar } from 'react-bootstrap';
 import './Header.css'
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
+    const { logOut, setUser, user, setIsLoading } = useAuth()
+    console.log('console log from header for user', user)
+    const history = useHistory()
+    const handleLogout = () => {
+        logOut()
+
+        history.push('/home')
+            .then(() => {
+                setUser({})
+            })
+            .finally(() => {
+                setIsLoading(true)
+            })
+    }
     return (
-        <div>
+        <div className='main-header'>
             <Navbar bg="primary" variant='dark' fixed='top' expand="lg">
                 <Container fluid>
                     <Navbar.Brand href="/home">Booking.Com</Navbar.Brand>
@@ -17,22 +32,16 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Link to='/home'><Nav.Link >Home</Nav.Link></Link>
-                            <Link to='/orders'><Nav.Link >My orders</Nav.Link></Link>
-                            <Link to='/manageOrders'><Nav.Link  >
-                                Manage orders
-                            </Nav.Link></Link>
+                            <Nav.Link ><Link to='/home'>Home</Link></Nav.Link>
+                            <Nav.Link ><Link to='/orders'>My orders</Link></Nav.Link>
+                            <Nav.Link  >
+                                <Link to='/manageOrders'>Manage all orders</Link>
+                            </Nav.Link>
                         </Nav>
                         <Form className="d-flex">
-                            <Link><button className='btn btn-warning'>Book</button></Link>
-                            <Link><button className='btn btn-primary'>Login</button></Link>
-                            <FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success" className='btn btn-dark'>Search</Button>
+                            <Link><button className='btn btn-warning'>Book Now</button></Link>
+                            {user?.email ? <button onClick={handleLogout} className='btn'>Log out</button> : <Link to='/login'>
+                                <button className='btn btn-primary'>Login</button></Link>}
                         </Form>
                     </Navbar.Collapse>
                 </Container>
