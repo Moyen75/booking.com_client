@@ -1,0 +1,16 @@
+a{
+    text-decoration: none;
+    color: white;
+}
+.banner-img{
+    max-height: 500px;
+}
+.offer{
+    border-radius: 15px;
+}
+.offer-details{
+    background-color: rgb(204, 236, 248);
+}
+.offer-details p{
+    text-align: justify;
+}
