@@ -58,3 +58,14 @@ a{
 .copyright{
     background-color: grey;
 }
+.place-order form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 50px;
+    align-items: center;
+}
+.place-order form input{
+    margin: 3px;
+    width: 60%;
+}

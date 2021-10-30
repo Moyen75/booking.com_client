@@ -8,6 +8,7 @@ import Footer from './components/Header/Footer/Footer';
 import Booking from './components/Booking/Booking';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AuthProvider from './components/AuthProvider/AuthProvider';
+import MyOrders from './components/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path='/login'>
               <Login></Login>
+            </Route>
+            <Route path='/myOrders'>
+              <MyOrders></MyOrders>
             </Route>
             <PrivateRoute path='/booking/:id'>
               <Booking></Booking>

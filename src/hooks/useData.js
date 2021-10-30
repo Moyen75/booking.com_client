@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react"
 
 const useData = () => {
-    const [offers, setOffers] = useState([])
+    const [services, setServices] = useState([])
     const [dataLoading, setDataLoading] = useState(true)
     useEffect(() => {
-        setDataLoading(true)
-        fetch('http://localhost:5000/offers')
+        // setDataLoading(true)
+        fetch('https://agile-wildwood-80919.herokuapp.com/services')
             .then(res => res.json())
-            .then(data => setOffers(data))
-        setDataLoading(false)
+            .then(data => setServices(data))
+        // setDataLoading(false)
     }, [])
     return {
-        offers,
-        dataLoading
+        services
     };
 }
 export default useData;

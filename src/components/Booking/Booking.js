@@ -1,12 +1,68 @@
-import React from 'react';
-import { useParams } from 'react-router';
+import { Card, Col, Row } from 'react-bootstrap';
+import { useHistory, useParams } from 'react-router';
+import useAuth from '../../hooks/useAuth';
+import useData from '../../hooks/useData';
+import { useForm } from "react-hook-form";
+import { useState } from 'react';
+import '../Header/Header.css'
+import axios from 'axios';
 
 const Booking = () => {
-    const id = useParams()
-    console.log('console log id from booking.', id)
+    const { id } = useParams()
+    const { services } = useData()
+    const history = useHistory()
+    const { user } = useAuth();
+    const [orderData, setOrderData] = useState({})
+    const { register, handleSubmit, reset } = useForm();
+    const orderItem = services.filter(service => service._id === id)
+    console.log(orderItem)
+    const onSubmit = data => {
+        console.log(data)
+        const order = orderItem[0]
+        const orderDetail = {
+            order,
+            userData: data,
+            pending: 'order pending'
+        }
+        console.log(orderDetail)
+        setOrderData(orderDetail)
+        axios.post(" https://agile-wildwood-80919.herokuapp.com/store", orderData)
+            .then(res => {
+                console.log('get response', res)
+                if (res.data.insertedId) {
+                    alert('order placed successfully')
+                    reset();
+                    history.push('/myOrders')
+                }
+            })
+    };
+
+
     return (
-        <div className='mt-5 pt-5'>
-            <h1>This is booking.</h1>
+        <div className='mt-5 p-5'>
+            {
+                orderItem[0] && <Row xs={1} sm={2} md={2} className='g-4'>
+                    <Col className='offer'>
+                        <Card.Img variant="top" src={orderItem[0].img} />
+                        <Card.Body className='offer-details'>
+                            <Card.Title>{orderItem[0].name}</Card.Title>
+                            <h6>{orderItem[0].title}</h6>
+                            <Card.Text>
+                                {orderItem[0].details}
+                            </Card.Text>
+                        </Card.Body>
+                    </Col>
+                    <Col className='place-order'>
+                        <h1>Order place Now</h1>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <input {...register("firstName", { required: true, maxLength: 20 })} placeholder='first name' />
+                            <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} placeholder='last name' />
+                            <input type="email" {...register("email")} value={user?.email} />
+                            <input type="submit" value="Place Order" />
+                        </form>
+                    </Col>
+                </Row>
+            }
         </div>
     );
 };
