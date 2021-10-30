@@ -12,21 +12,21 @@ const Booking = () => {
     const { services } = useData()
     const history = useHistory()
     const { user } = useAuth();
-    const [orderData, setOrderData] = useState({})
     const { register, handleSubmit, reset } = useForm();
     const orderItem = services.filter(service => service._id === id)
     console.log(orderItem)
     const onSubmit = data => {
         console.log(data)
-        const order = orderItem[0]
+        const order = orderItem[0];
+
         const orderDetail = {
             order,
             userData: data,
-            pending: 'order pending'
+            pending: 'order pending',
+            email: user.email
         }
         console.log(orderDetail)
-        setOrderData(orderDetail)
-        axios.post(" https://agile-wildwood-80919.herokuapp.com/store", orderData)
+        axios.post("https://agile-wildwood-80919.herokuapp.com/store", orderDetail)
             .then(res => {
                 console.log('get response', res)
                 if (res.data.insertedId) {
@@ -57,7 +57,6 @@ const Booking = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <input {...register("firstName", { required: true, maxLength: 20 })} placeholder='first name' />
                             <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} placeholder='last name' />
-                            <input type="email" {...register("email")} value={user?.email} />
                             <input type="submit" value="Place Order" />
                         </form>
                     </Col>

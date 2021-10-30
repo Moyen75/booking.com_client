@@ -9,6 +9,8 @@ import Booking from './components/Booking/Booking';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AuthProvider from './components/AuthProvider/AuthProvider';
 import MyOrders from './components/MyOrders/MyOrders';
+import NotFound from './components/NotFound/NotFound';
+import ManageOrders from './components/ManageOrders/ManageOrders';
 
 function App() {
   return (
@@ -29,9 +31,15 @@ function App() {
             <Route path='/myOrders'>
               <MyOrders></MyOrders>
             </Route>
+            <Route path='/manage-orders'>
+          <ManageOrders></ManageOrders>
+            </Route>
             <PrivateRoute path='/booking/:id'>
               <Booking></Booking>
             </PrivateRoute>
+            <Route path='*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>

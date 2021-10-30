@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import useAuth from '../../hooks/useAuth';
 import '../Header/Header.css'
 
-const MyOrders = () => {
-    const { user } = useAuth()
-    const email = user.email;
-    const [orders, setOrder] = useState([])
+const ManageOrders = () => {
+    const [allOrders, setAllOrders] = useState([])
     useEffect(() => {
-        fetch(`https://agile-wildwood-80919.herokuapp.com/store`)
+        fetch('https://agile-wildwood-80919.herokuapp.com/store')
             .then(res => res.json())
-            .then(data => setOrder(data))
+            .then(data => setAllOrders(data))
     }, [])
-    const myOrders = orders?.filter(order => order.email === email)
-    console.log(orders)
 
     const handleDelete = id => {
         const proceed = window.confirm('Do you want to delete? ')
@@ -25,27 +20,27 @@ const MyOrders = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
-                    const remainingOrder = orders?.filter(order => order._id !== id)
-                    setOrder(remainingOrder)
+                    const remainingOrder = allOrders?.filter(order => order._id !== id)
+                    setAllOrders(remainingOrder)
                 })
         }
     }
     return (
-        <div className='mt-5 pt-4 my-order'>
-            {myOrders && <Row md={1} className='g-4'>
-                <h1>My orders</h1>
+        <div className='mt-5 pt-2 my-order'>
+            {allOrders && <Row md={1} className='g-4'>
+                <h1>All orders</h1>
                 <hr className='w-75 mx-auto' />
                 {
-                    myOrders?.map(myOrder => <Row >
+                    allOrders?.map(myOrder => <Row >
                         <Col>{myOrder.order.name}</Col>
                         <Col className='pb-2'><button onClick={() => handleDelete(myOrder._id)}><i className="fas fa-trash-alt "></i></button></Col>
                         <hr className='' />
                     </Row>)
                 }
-            </Row> 
+            </Row>
             }
         </div>
     );
 };
 
-export default MyOrders;
+export default ManageOrders;

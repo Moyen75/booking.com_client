@@ -33,10 +33,10 @@ const Header = () => {
                             navbarScroll
                         >
                             <Nav.Link ><Link to='/home'>Home</Link></Nav.Link>
-                            <Nav.Link ><Link to='/orders'>My orders</Link></Nav.Link>
-                            <Nav.Link  >
-                                <Link to='/manageOrders'>Manage all orders</Link>
-                            </Nav.Link>
+                            {user.email && <Nav.Link ><Link to='/myOrders'>My orders</Link></Nav.Link>}{
+                                user.email && <Nav.Link  >
+                                    <Link to='/manage-orders'>Manage all orders</Link>
+                                </Nav.Link>}
                         </Nav>
                         <Form className="d-flex">
                             <Link><button className='btn btn-warning'>Book Now</button></Link>

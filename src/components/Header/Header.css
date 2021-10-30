@@ -69,3 +69,33 @@ a{
     margin: 3px;
     width: 60%;
 }
+.myOrders{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.myOrders .icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+td{
+    border: 1px solid grey;
+}
+.my-order{
+    min-height: 400px;
+}
+.not-found{
+    background-color: lightcoral;
+    padding: 50px;
+}
+.not-found h1{
+ font-size: 300px;
+ color: indigo;
+}
+.not-found p{
+    font-size: 30px;
+    color: red;
+}
