@@ -38,7 +38,9 @@ const MyOrders = () => {
                 <h1>My orders</h1>
                 <hr className='w-75 mx-auto' />
                 {
-                    myOrders?.map(myOrder => <Row >
+                    myOrders?.map(myOrder => <Row 
+                    key={myOrder._id}
+                    >
                         <Col>{myOrder.order.name}</Col>
                         <Col><small>{myOrder.pending}</small></Col>
                         <Col className='pb-2'><button onClick={() => handleDelete(myOrder._id)}><i className="fas fa-trash-alt "></i></button></Col>

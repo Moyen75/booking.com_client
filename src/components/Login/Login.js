@@ -6,14 +6,19 @@ import '../Header/Header.css'
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { signInUsingPopup, setError, setUser } = useAuth();
+    const { signInUsingPopup, setError, setUser, signInWithEmailAndPassword, auth } = useAuth();
     const history = useHistory()
     const location = useLocation()
     const redirect_url = location.state?.from || '/home'
-    
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-       
+        const email = data.email;
+        const password = data.password;
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                history.push(redirect_url)
+            })
     }
     const handleSignInWithGoogle = () => {
         signInUsingPopup()

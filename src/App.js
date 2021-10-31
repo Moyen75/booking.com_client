@@ -14,6 +14,7 @@ import ManageOrders from './components/ManageOrders/ManageOrders';
 import Offers from './components/Home/Offers/Offers';
 import About from './components/About/About';
 import AddOffer from './components/AddOffer/AddOffer';
+import Registation from './components/Registation/Registation';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
             <Route path='/login'>
               <Login></Login>
             </Route>
+            <Route path='/register'>
+              <Registation></Registation>
+            </Route>
             <Route path='/services'>
               <Offers></Offers>
             </Route>
@@ -46,6 +50,9 @@ function App() {
             <Route path='/manage-orders'>
               <ManageOrders></ManageOrders>
             </Route>
+            <PrivateRoute path='/booking'>
+              <Offers></Offers>
+            </PrivateRoute>
             <PrivateRoute path='/booking/:id'>
               <Booking></Booking>
             </PrivateRoute>

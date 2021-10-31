@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import initializeAuthentication from "../Firebase/firebse.init"
-import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 initializeAuthentication()
@@ -19,7 +19,7 @@ const useFirebase = () => {
 
     useEffect(() => {
         setIsLoading(true)
-       const unsubscribe = onAuthStateChanged(auth, user => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
                 setUser(user)
             }
@@ -45,7 +45,10 @@ const useFirebase = () => {
         setUser,
         logOut,
         isLoading,
-        setIsLoading
+        setIsLoading,
+        auth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword
     }
 }
 export default useFirebase;
