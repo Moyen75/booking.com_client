@@ -17,7 +17,7 @@ const Login = () => {
         const password = data.password;
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
-                history.push(redirect_url)
+
             })
     }
     const handleSignInWithGoogle = () => {

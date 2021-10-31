@@ -20,8 +20,12 @@ const ManageOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    const remainingOrder = allOrders?.filter(order => order._id !== id)
-                    setAllOrders(remainingOrder)
+                    if (data.deletedCount) {
+                        alert('Offer deleted successfully.')
+                        const remainingOrder = allOrders?.filter(order => order._id !== id)
+                        setAllOrders(remainingOrder)
+                    }
+
                 })
         }
     }

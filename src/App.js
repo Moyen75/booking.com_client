@@ -29,25 +29,25 @@ function App() {
             <Route exact path="/home">
               <Home></Home>
             </Route>
-            <Route path='/login'>
+            <Route exact path='/login'>
               <Login></Login>
             </Route>
-            <Route path='/register'>
+            <Route exact path='/register'>
               <Registation></Registation>
             </Route>
-            <Route path='/services'>
+            <Route exact path='/services'>
               <Offers></Offers>
             </Route>
-            <Route path='/myOrders'>
+            <Route exact path='/myOrders'>
               <MyOrders></MyOrders>
             </Route>
-            <Route path='/about'>
+            <Route exact path='/about'>
               <About></About>
             </Route>
-            <Route path="/add-service">
+            <Route exact path="/add-service">
               <AddOffer></AddOffer>
             </Route>
-            <Route path='/manage-orders'>
+            <Route exact path='/manage-orders'>
               <ManageOrders></ManageOrders>
             </Route>
             <PrivateRoute exact path='/booking/:id'>

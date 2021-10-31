@@ -22,7 +22,7 @@ const MainBanner = () => {
                     </Col>
                 </Row> : <Row xs={1} md={2} className='main-banner-first g-4 p-4'>
                     <Col><img src={logo1} alt="" /></Col>
-                    <Col className='w-50 pt-4 first'>
+                    <Col className=' pt-4 first'>
                         <h1>Book <br /> your favourite Hotel</h1>
                         <p>You may be charged a prepayment according to the property's prepayment policy. This is done to verify your credit card, where a temporary hold is placed on an amount until after check-out. It's best to contact the property for any charging queries.</p>
                         <Link to='/services'>
