@@ -7,14 +7,13 @@ import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
     const { logOut, setUser, user, setIsLoading } = useAuth()
-    
+
     const history = useHistory()
     const handleLogout = () => {
         logOut()
-
-        history.push('/home')
             .then(() => {
                 setUser({})
+                history.push('/home')
             })
             .finally(() => {
                 setIsLoading(true)
@@ -44,7 +43,7 @@ const Header = () => {
                                 </Nav.Link>}
                         </Nav>
                         <Form className="d-flex">
-                            <Link><button className='btn btn-warning m-1'>Book Now</button></Link>
+                            <Link to='/services'><button className='btn btn-warning m-1'>Book Now</button></Link>
                             {user?.email ? <button onClick={handleLogout} className='btn btn-success m-1'>Log out</button> : <Link to='/login'>
                                 <button className='btn btn-primary m-1'>Login</button></Link>}
                         </Form>
