@@ -4,7 +4,7 @@ This is booking.com [Live site](https://assignment-11-b1d81.web.app/).
 
 ## Available content
 
-In this web you do several activities.such as:
+In this web you will be able to do several activities.such as:
 ### you can see details of some luxurious hotels.
 ### you can book a hotel.
 ### you can see your ordered hotels.
