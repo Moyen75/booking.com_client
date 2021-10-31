@@ -53,9 +53,6 @@ function App() {
             <PrivateRoute exact path='/booking/:id'>
               <Booking></Booking>
             </PrivateRoute>
-            <PrivateRoute exact path='/explore'>
-              <Offers></Offers>
-            </PrivateRoute>
             <Route path='*'>
               <NotFound></NotFound>
             </Route>

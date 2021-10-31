@@ -25,7 +25,7 @@ const MainBanner = () => {
                     <Col className='w-50 pt-4 first'>
                         <h1>Book <br /> your favourite Hotel</h1>
                         <p>You may be charged a prepayment according to the property's prepayment policy. This is done to verify your credit card, where a temporary hold is placed on an amount until after check-out. It's best to contact the property for any charging queries.</p>
-                        <Link to='/explore'>
+                        <Link to='/services'>
                             <button className='btn btn-warning'>Book Now</button></Link>
                     </Col>
                 </Row>
