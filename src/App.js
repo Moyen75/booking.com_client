@@ -50,7 +50,7 @@ function App() {
             <Route path='/manage-orders'>
               <ManageOrders></ManageOrders>
             </Route>
-            <PrivateRoute path='/booking'>
+            <PrivateRoute exact path='/booking'>
               <Offers></Offers>
             </PrivateRoute>
             <PrivateRoute path='/booking/:id'>
