@@ -7,7 +7,7 @@ This is booking.com [Live site](https://assignment-11-b1d81.web.app/).
 In this web you do several activities.such as:
 ### you can see details of some luxurious hotels.
 ### you can book a hotel.
-### you can see you ordered hotels.
+### you can see your ordered hotels.
 ### you can also see all ordered hotels.
 ### you can delete a hotel from your ordered list.
 ### you can add a new hotel.
