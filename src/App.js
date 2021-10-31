@@ -50,11 +50,11 @@ function App() {
             <Route path='/manage-orders'>
               <ManageOrders></ManageOrders>
             </Route>
-            <PrivateRoute exact path='/booking'>
-              <Offers></Offers>
-            </PrivateRoute>
-            <PrivateRoute path='/booking/:id'>
+            <PrivateRoute exact path='/booking/:id'>
               <Booking></Booking>
+            </PrivateRoute>
+            <PrivateRoute exact path='/explore'>
+              <Offers></Offers>
             </PrivateRoute>
             <Route path='*'>
               <NotFound></NotFound>
