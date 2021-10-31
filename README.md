@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# Booking.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is booking.com [Live site](https://assignment-11-b1d81.web.app/).
 
-## Available Scripts
+## Available content
 
-In the project directory, you can run:
+In this web you will be able to do several activities.such as:
+### you can see details of some luxurious hotels.
+### you can book a hotel.
+### you can see your ordered hotels.
+### you can also see all ordered hotels.
+### you can delete a hotel from your ordered list.
+### you can add a new hotel.
 
 ### `npm start`
 
