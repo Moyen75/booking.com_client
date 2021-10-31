@@ -11,6 +11,9 @@ import AuthProvider from './components/AuthProvider/AuthProvider';
 import MyOrders from './components/MyOrders/MyOrders';
 import NotFound from './components/NotFound/NotFound';
 import ManageOrders from './components/ManageOrders/ManageOrders';
+import Offers from './components/Home/Offers/Offers';
+import About from './components/About/About';
+import AddOffer from './components/AddOffer/AddOffer';
 
 function App() {
   return (
@@ -28,11 +31,20 @@ function App() {
             <Route path='/login'>
               <Login></Login>
             </Route>
+            <Route path='/services'>
+              <Offers></Offers>
+            </Route>
             <Route path='/myOrders'>
               <MyOrders></MyOrders>
             </Route>
+            <Route path='/about'>
+              <About></About>
+            </Route>
+            <Route path="/add-service">
+              <AddOffer></AddOffer>
+            </Route>
             <Route path='/manage-orders'>
-          <ManageOrders></ManageOrders>
+              <ManageOrders></ManageOrders>
             </Route>
             <PrivateRoute path='/booking/:id'>
               <Booking></Booking>

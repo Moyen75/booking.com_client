@@ -13,7 +13,7 @@ const MyOrders = () => {
             .then(data => setOrder(data))
     }, [])
     const myOrders = orders?.filter(order => order.email === email)
-    console.log(orders)
+
 
     const handleDelete = id => {
         const proceed = window.confirm('Do you want to delete? ')
@@ -24,9 +24,11 @@ const MyOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
-                    const remainingOrder = orders?.filter(order => order._id !== id)
-                    setOrder(remainingOrder)
+                    if (data.deletedCount) {
+                        alert('Offer deleted successfully.')
+                        const remainingOrder = orders?.filter(order => order._id !== id)
+                        setOrder(remainingOrder)
+                    }
                 })
         }
     }
@@ -38,11 +40,12 @@ const MyOrders = () => {
                 {
                     myOrders?.map(myOrder => <Row >
                         <Col>{myOrder.order.name}</Col>
+                        <Col><small>{myOrder.pending}</small></Col>
                         <Col className='pb-2'><button onClick={() => handleDelete(myOrder._id)}><i className="fas fa-trash-alt "></i></button></Col>
                         <hr className='' />
                     </Row>)
                 }
-            </Row> 
+            </Row>
             }
         </div>
     );

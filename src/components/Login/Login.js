@@ -10,10 +10,10 @@ const Login = () => {
     const history = useHistory()
     const location = useLocation()
     const redirect_url = location.state?.from || '/home'
-    console.log('This is location', location)
+    
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-        console.log(data)
+       
     }
     const handleSignInWithGoogle = () => {
         signInUsingPopup()

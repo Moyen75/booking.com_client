@@ -7,7 +7,7 @@ import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
     const { logOut, setUser, user, setIsLoading } = useAuth()
-    console.log('console log from header for user', user)
+    
     const history = useHistory()
     const handleLogout = () => {
         logOut()
@@ -33,15 +33,20 @@ const Header = () => {
                             navbarScroll
                         >
                             <Nav.Link ><Link to='/home'>Home</Link></Nav.Link>
+                            <Nav.Link ><Link to='/services'>Services</Link></Nav.Link>
+                            <Nav.Link ><Link to='/about'>Customer service</Link></Nav.Link>
                             {user.email && <Nav.Link ><Link to='/myOrders'>My orders</Link></Nav.Link>}{
                                 user.email && <Nav.Link  >
                                     <Link to='/manage-orders'>Manage all orders</Link>
+                                </Nav.Link>}{
+                                user.email && <Nav.Link  >
+                                    <Link to='/add-service'>Add service</Link>
                                 </Nav.Link>}
                         </Nav>
                         <Form className="d-flex">
-                            <Link><button className='btn btn-warning'>Book Now</button></Link>
-                            {user?.email ? <button onClick={handleLogout} className='btn'>Log out</button> : <Link to='/login'>
-                                <button className='btn btn-primary'>Login</button></Link>}
+                            <Link><button className='btn btn-warning m-1'>Book Now</button></Link>
+                            {user?.email ? <button onClick={handleLogout} className='btn btn-success m-1'>Log out</button> : <Link to='/login'>
+                                <button className='btn btn-primary m-1'>Login</button></Link>}
                         </Form>
                     </Navbar.Collapse>
                 </Container>

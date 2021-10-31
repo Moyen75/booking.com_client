@@ -4,6 +4,7 @@ import '../Header/Header.css'
 
 const ManageOrders = () => {
     const [allOrders, setAllOrders] = useState([])
+    const [isPending, setIspending] = useState(true)
     useEffect(() => {
         fetch('https://agile-wildwood-80919.herokuapp.com/store')
             .then(res => res.json())
@@ -19,11 +20,13 @@ const ManageOrders = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     const remainingOrder = allOrders?.filter(order => order._id !== id)
                     setAllOrders(remainingOrder)
                 })
         }
+    }
+    const handleOrder = () => {
+        setIspending(false)
     }
     return (
         <div className='mt-5 pt-2 my-order'>
@@ -33,12 +36,15 @@ const ManageOrders = () => {
                 {
                     allOrders?.map(myOrder => <Row >
                         <Col>{myOrder.order.name}</Col>
+                        <Col>{isPending ? <small>{myOrder.pending}</small> : <small>order approved.</small>}</Col>
                         <Col className='pb-2'><button onClick={() => handleDelete(myOrder._id)}><i className="fas fa-trash-alt "></i></button></Col>
                         <hr className='' />
                     </Row>)
                 }
+
             </Row>
             }
+            <button className='btn btn-success' onClick={handleOrder}>confirm order</button>
         </div>
     );
 };

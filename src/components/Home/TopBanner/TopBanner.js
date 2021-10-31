@@ -6,7 +6,7 @@ import bannerTwo from '../../../images/tidy-hall-with-two-pictures-wall.jpg'
 
 const TopBanner = () => {
     return (
-        <div >
+        <div className='top-banner'>
             <Carousel fade>
                 <Carousel.Item >
                     <img

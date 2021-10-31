@@ -8,7 +8,7 @@ const Offer = (props) => {
     return (
         <div>
             <Col className='offer'>
-                <Card.Img variant="top" src={img} />
+                <div className='img'><Card.Img variant="top" src={img} /></div>
                 <Card.Body className='offer-details'>
                     <Card.Title>{name}</Card.Title>
                     <h6>{title}</h6>

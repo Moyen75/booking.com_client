@@ -9,7 +9,7 @@ const Footer = () => {
                 <div>
                     <h1>Save time, Save Money!</h1>
                     <p>Sign up and we'll send the best deals to you</p>
-                    <small className='justify-content-center'><input type="email" className="p-2 mt-1" id="" />
+                    <small className='justify-content-center'><input type="email" placeholder='E-mail' className="p-2 mt-1" id="" />
                         <button className='btn btn-primary p-2 mb-1'>subscribe now</button></small>
                 </div>
             </div>

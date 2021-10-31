@@ -14,9 +14,7 @@ const Booking = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const orderItem = services.filter(service => service._id === id)
-    console.log(orderItem)
     const onSubmit = data => {
-        console.log(data)
         const order = orderItem[0];
 
         const orderDetail = {
@@ -25,10 +23,8 @@ const Booking = () => {
             pending: 'order pending',
             email: user.email
         }
-        console.log(orderDetail)
         axios.post("https://agile-wildwood-80919.herokuapp.com/store", orderDetail)
             .then(res => {
-                console.log('get response', res)
                 if (res.data.insertedId) {
                     alert('order placed successfully')
                     reset();
@@ -43,7 +39,7 @@ const Booking = () => {
             {
                 orderItem[0] && <Row xs={1} sm={2} md={2} className='g-4'>
                     <Col className='offer'>
-                        <Card.Img variant="top" src={orderItem[0].img} />
+                        <div className='img'> <Card.Img variant="top" src={orderItem[0].img} /></div>
                         <Card.Body className='offer-details'>
                             <Card.Title>{orderItem[0].name}</Card.Title>
                             <h6>{orderItem[0].title}</h6>

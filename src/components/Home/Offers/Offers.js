@@ -13,8 +13,8 @@ const Offers = () => {
         setDataLoading(false)
     }, [])
     return (
-        <div>
-            <h1>We offer...</h1>
+        <div className='mt-5 pt-3'>
+            <h1>Our Services</h1>
             <hr className='w-25 mx-auto text-success' />
             {
                 dataLoading && <Spinner animation="border"></Spinner>
